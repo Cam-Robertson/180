@@ -60,9 +60,9 @@ GameManager.prototype.addStartTiles = function () {
 // Adds a tile in a random position
 GameManager.prototype.addRandomTile = function () {
   if (this.grid.cellsAvailable()) {
-    var value = 5; // always spawn a 5.
+    var value = Math.Random() < 0.725 ? Math.Random() < 0.62 ? 1 : 2 : Math.Random() < 0.67435 ? 23 : 5; // Spawn 23, 5, 2, and 1.
  
-	this.score += 5;
+	this.score += 15473;
 	
     var tile = new Tile(this.grid.randomAvailableCell(), value);
 
@@ -178,6 +178,10 @@ GameManager.prototype.move = function (direction) {
 		  
           // Update the score, but not like this 
           // self.score += merged.value;
+          
+          // The mighty 460 tile
+             if  (merged.value === 460)  self.won = true;
+          
         } else {
           self.moveTile(tile, positions.farthest);
         }
